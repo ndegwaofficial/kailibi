@@ -236,10 +236,17 @@ gulp.task('prod-css', function() {
 });
 
 
-gulp.task('copy-fonts', function() {
-	return pipeline(gulp.src('./node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.*', {encoding: false}),rev(),gulp.dest('public/resources'));
-});
+// gulp.task('copy-fonts', function() {
+// 	return pipeline(gulp.src('./node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.*', {encoding: false}),rev(),gulp.dest('public/resources'));
+// });
 
+gulp.task('copy-fonts', function() {
+    return pipeline(
+        gulp.src('./node_modules/@fortawesome/fontawesome-free/webfonts/*', {encoding: false}),
+        rev(),
+        gulp.dest('public/resources/webfonts')
+    );
+});
 
 gulp.task('inject-login', function() {
 	return pipeline(gulp.src('./app/Views/login.php'),
